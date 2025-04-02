@@ -43,7 +43,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    margin-bottom: 3.5rem;
+    margin-bottom: 2rem;
 }
 
 .scores div {
@@ -79,6 +79,10 @@ body {
 .winCountO {
     background-color: rgb(220, 191, 63);
     box-shadow: 0 0 1rem rgba(220, 191, 63, 0.5);
+}
+
+#turnIndicator {
+    margin-bottom: 1rem;
 }
 
 .gameBoard {
