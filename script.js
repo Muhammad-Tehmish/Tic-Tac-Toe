@@ -18,6 +18,10 @@ let winCountO = 0;
 let playerX = true;
 let nextPlayerX = true; // X will start the first game
 
+const clickSound = new Audio("assets/mouse-click-sound.mp3");
+const drawSound = new Audio("assets/draw-sound.mp3");
+const winSound = new Audio("assets/win-sound.mp3");
+
 const winningPatterns = [
   // Horizontal
   [0, 1, 2],
@@ -48,6 +52,9 @@ window.addEventListener("load", function () {
 cells.forEach((cell) => {
   cell.addEventListener("click", () => {
     if (cell.innerText !== "") return;
+
+    clickSound.currentTime = 0;
+    clickSound.play();
 
     if (playerX === true) {
       cell.innerText = "X";
@@ -89,6 +96,8 @@ const checkWinner = () => {
 // Display winner and toggle starting player for next game
 const displayWinner = (winner) => {
   result.innerText = `Game Over. Player ${winner} wins!`;
+  winSound.currentTime = 0;
+  winSound.play();
   resultContainer.classList.remove("hide");
   turnIndicator.innerText = "";
   disableAllCells();
@@ -107,6 +116,8 @@ const displayWinner = (winner) => {
 // Display draw and toggle starting player for next game
 const displayDrawResult = () => {
   result.innerText = `Game Drawn!`;
+  drawSound.currentTime = 0;
+  drawSound.play();
   resultContainer.classList.remove("hide");
   disableAllCells();
   draw.innerText = drawCount;
